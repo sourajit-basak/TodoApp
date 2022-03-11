@@ -1,8 +1,9 @@
 import React, { useState, useRef, useEffect } from "react";
-
+import TaskAltIcon from "@mui/icons-material/TaskAlt";
 import {
   Box,
   Button,
+  Container,
   Input,
   List,
   ListItem,
@@ -26,38 +27,33 @@ function App() {
     setTodos(existingTodos ? JSON.parse(existingTodos) : []);
   }, []);
   return (
-    <div>
-      {/* <ul>
-        {todos.map((todo) => (
-          <li key={todo}>{todo}</li>
-        ))}
-      </ul> */}
-      <Box sx={{ width: "100%", maxWidth: 360, bgcolor: "background.paper" }}>
-        <List>
-          {todos.map((todo) => (
-            <ListItem key={todo} disablePadding>
-              {/* <ListItemText primary="Inbox" /> */}
-              <ListItemButton>
-                <ListItemText primary={todo} />
-              </ListItemButton>
-            </ListItem>
-          ))}
-        </List>
-      </Box>
-      <Box sx={{ width: "100%", maxWidth: 360, bgcolor: "background.paper" }}>
-        <form onSubmit={addTodo}>
-          <div>
-            {" "}
-            {/* <input ref={todoText}></input> */}
-            <Input placeholder="Enter To do" inputRef={todoText}></Input>
-            {/* <input type="submit" value="Add Todo" /> */}
-            <Button variant="outlined" onSubmit={addTodo}>
-              Add Todo
-            </Button>
-          </div>
-        </form>
-      </Box>
-    </div>
+    <Container maxWidth="sm">
+      <div>
+        <Box sx={{ width: "100%", maxWidth: 360, bgcolor: "background.paper" }}>
+          <List>
+            {todos.map((todo) => (
+              <ListItem key={todo} disablePadding>
+                {/* <ListItemText primary="Inbox" /> */}
+                <ListItemButton>
+                  <TaskAltIcon />
+                  <ListItemText primary={todo} />
+                </ListItemButton>
+              </ListItem>
+            ))}
+          </List>
+        </Box>
+        <Box sx={{ width: "100%", maxWidth: 360, bgcolor: "background.paper" }}>
+          <form onSubmit={addTodo}>
+            <div>
+              <Input placeholder="Enter To do" inputRef={todoText}></Input>
+              <Button variant="outlined" onSubmit={addTodo}>
+                Add Todo
+              </Button>
+            </div>
+          </form>
+        </Box>
+      </div>
+    </Container>
   );
 }
 
